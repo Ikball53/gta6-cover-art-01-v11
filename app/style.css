@@ -1,0 +1,136 @@
+/* Vice Coast Cover Studio — editor chrome.
+   Dark plum shell, teal and coral controls, license-plate brand mark. */
+:root {
+  --vc-ink: #f4efff;
+  --vc-dim: #b9aede;
+  --vc-bg: #150b2e;
+  --vc-card: #20113f;
+  --vc-line: #3a2670;
+  --vc-teal: #2ee6c8;
+  --vc-coral: #ff7a5c;
+  --vc-gold: #ffb340;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(1100px 620px at 18% -8%, #3b1a7a 0%, var(--vc-bg) 58%);
+  color: var(--vc-ink);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+.vc-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px 10px;
+}
+.vc-brand { display: flex; gap: 14px; align-items: center; min-width: 320px; }
+.vc-brand h1 { margin: 0; font-size: 26px; letter-spacing: 0.2px; }
+.vc-brand p { margin: 4px 0 0; color: var(--vc-dim); font-size: 13.5px; max-width: 520px; }
+.vc-miniplate {
+  position: relative;
+  width: 74px; height: 46px;
+  background: linear-gradient(180deg, #fdfdf8, #e8ecf2);
+  border: 3px solid #1b3a6b;
+  border-radius: 6px;
+  color: #1b3a6b;
+  display: grid; place-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45), inset 0 0 0 2px #ffffff;
+  flex: none;
+}
+.vc-miniplate strong { font-family: "Arial Black", Impact, sans-serif; font-size: 24px; letter-spacing: 3px; }
+.vc-bolt { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #9aa7bd; box-shadow: inset 0 1px 2px rgba(0,0,0,0.5); }
+.vc-bolt.tl { top: 4px; left: 5px; } .vc-bolt.tr { top: 4px; right: 5px; }
+.vc-bolt.bl { bottom: 4px; left: 5px; } .vc-bolt.br { bottom: 4px; right: 5px; }
+.vc-steps {
+  list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; flex-wrap: wrap;
+}
+.vc-step {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 12px; border-radius: 999px;
+  border: 1px solid var(--vc-line); color: var(--vc-dim); font-size: 13px; font-weight: 600;
+}
+.vc-step b {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--vc-line); color: var(--vc-ink);
+  display: grid; place-items: center; font-size: 12px;
+}
+.vc-step.is-on { color: #0d2b26; background: var(--vc-teal); border-color: var(--vc-teal); }
+.vc-step.is-on b { background: #0d2b26; color: var(--vc-teal); }
+.vc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.vc-btn {
+  border: 0; border-radius: 999px; padding: 11px 18px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.vc-btn-teal { background: var(--vc-teal); color: #0d2b26; }
+.vc-btn-ghost { background: #2c1a5e; color: var(--vc-ink); }
+.vc-btn-gold { background: linear-gradient(180deg, #ffc95e, #ff9d2e); color: #2a1500; }
+.vc-shell {
+  display: grid; grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px; padding: 10px 22px 26px; align-items: start;
+}
+@media (max-width: 980px) { .vc-shell { grid-template-columns: 1fr; } }
+.vc-stagewrap {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--vc-line);
+  border-radius: 18px; padding: 18px;
+}
+.vc-stage { position: relative; max-width: 760px; margin: 0 auto; }
+.vc-stage canvas {
+  display: block; width: 100%; height: auto;
+  border-radius: 8px; background: #0a0618;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.5);
+  cursor: grab; touch-action: none;
+}
+.vc-stage canvas:active { cursor: grabbing; }
+.vc-handles { position: absolute; inset: 0; pointer-events: none; }
+.vc-handlebox {
+  position: absolute; border: 2px solid var(--vc-teal);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(0,0,0,0.35);
+}
+.vc-handlebox i {
+  position: absolute; width: 14px; height: 14px; background: #fff;
+  border: 3px solid var(--vc-teal); border-radius: 3px;
+}
+.vc-handlebox i:nth-child(1) { left: -8px; top: -8px; }
+.vc-handlebox i:nth-child(2) { right: -8px; top: -8px; }
+.vc-handlebox i:nth-child(3) { left: -8px; bottom: -8px; }
+.vc-handlebox i:nth-child(4) { right: -8px; bottom: -8px; }
+.vc-hint { text-align: center; color: var(--vc-dim); font-size: 13px; margin: 12px 0 2px; }
+.vc-panel {
+  background: var(--vc-card); border: 1px solid var(--vc-line);
+  border-radius: 18px; padding: 18px;
+}
+.vc-group { margin-bottom: 18px; }
+.vc-group h2 {
+  margin: 0 0 10px; font-size: 12px; letter-spacing: 2.2px;
+  text-transform: uppercase; color: var(--vc-gold);
+}
+.vc-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.vc-chip {
+  border: 1px solid var(--vc-line); background: #2c1a5e; color: var(--vc-ink);
+  border-radius: 999px; padding: 8px 13px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+}
+.vc-chip.is-on { background: var(--vc-coral); border-color: var(--vc-coral); color: #2a0f08; }
+.vc-field { display: block; font-size: 13px; color: var(--vc-dim); margin-bottom: 10px; }
+.vc-field input[type="text"] {
+  display: block; width: 100%; margin-top: 5px;
+  background: #170d33; border: 1px solid var(--vc-line); border-radius: 10px;
+  color: var(--vc-ink); padding: 10px 12px; font-size: 14px; font-weight: 600;
+}
+.vc-field input[type="range"] { width: 100%; accent-color: var(--vc-coral); margin-top: 6px; }
+.vc-status { color: var(--vc-teal); font-size: 13px; margin: 10px 0 0; }
+.vc-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.vc-thumbs img {
+  width: 100%; height: 62px; object-fit: cover; border-radius: 8px;
+  border: 2px solid transparent; cursor: pointer; display: block;
+}
+.vc-thumbs img.is-on { border-color: var(--vc-teal); }
+.vc-note { color: var(--vc-dim); font-size: 12.5px; line-height: 1.45; margin: 10px 0 0; }
+body.vc-shot-cover .vc-topbar, body.vc-shot-cover .vc-panel,
+body.vc-shot-cover .vc-hint, body.vc-shot-cover .vc-handles { display: none; }
+body.vc-shot-cover .vc-shell { grid-template-columns: 1fr; padding: 0; }
+body.vc-shot-cover .vc-stagewrap { border: 0; background: none; padding: 0; border-radius: 0; }
+body.vc-shot-cover .vc-stage { max-width: none; }
+body.vc-shot-cover .vc-stage canvas { border-radius: 0; box-shadow: none; }

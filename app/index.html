@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Coast Cover Studio — multi-panel cover maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="vc-topbar">
+  <div class="vc-brand">
+    <div class="vc-miniplate" aria-hidden="true"><span class="vc-bolt tl"></span><span class="vc-bolt tr"></span><span class="vc-bolt bl"></span><span class="vc-bolt br"></span><strong>VI</strong></div>
+    <div>
+      <h1>Vice Coast Cover Studio</h1>
+      <p>Turn your photos into multi-panel cover art. Photos stay on your machine — nothing is uploaded.</p>
+    </div>
+  </div>
+  <ol class="vc-steps" aria-label="Three steps">
+    <li class="vc-step is-on"><b>1</b> Add photos</li>
+    <li class="vc-step"><b>2</b> Style your cover</li>
+    <li class="vc-step"><b>3</b> Export PNG</li>
+  </ol>
+  <div class="vc-actions">
+    <button id="vcAddBtn" type="button" class="vc-btn vc-btn-teal">Add photos</button>
+    <button id="vcSampleBtn" type="button" class="vc-btn vc-btn-ghost">Sample photos</button>
+    <button id="vcExportBtn" type="button" class="vc-btn vc-btn-gold">Export PNG</button>
+  </div>
+</header>
+<main class="vc-shell">
+  <section class="vc-stagewrap">
+    <div id="vcStage" class="vc-stage">
+      <canvas id="vcCanvas" width="1080" height="1080"></canvas>
+      <div id="vcHandles" class="vc-handles" aria-hidden="true"></div>
+    </div>
+    <p class="vc-hint">Click a panel to select it, then drag to reposition. Scroll on a panel to zoom. Corner handles show the selected crop.</p>
+  </section>
+  <aside class="vc-panel">
+    <div class="vc-group">
+      <h2>Layout</h2>
+      <div class="vc-row" id="vcLayoutRow">
+        <button type="button" data-layout="classic" class="vc-chip is-on">Classic grid</button>
+        <button type="button" data-layout="hero" class="vc-chip">Hero + duo</button>
+        <button type="button" data-layout="triptych" class="vc-chip">Triptych</button>
+      </div>
+    </div>
+    <div class="vc-group">
+      <h2>Post size</h2>
+      <div class="vc-row" id="vcSizeRow">
+        <button type="button" data-size="square" class="vc-chip is-on">1080 × 1080</button>
+        <button type="button" data-size="portrait" class="vc-chip">1080 × 1350</button>
+        <button type="button" data-size="wide" class="vc-chip">1920 × 1080</button>
+      </div>
+    </div>
+    <div class="vc-group">
+      <h2>Colour grade</h2>
+      <div class="vc-row" id="vcGradeRow">
+        <button type="button" data-grade="sunset" class="vc-chip is-on">Vice sunset</button>
+        <button type="button" data-grade="neon" class="vc-chip">Neon night</button>
+        <button type="button" data-grade="clean" class="vc-chip">Clean</button>
+      </div>
+    </div>
+    <div class="vc-group">
+      <h2>Caption</h2>
+      <label class="vc-field">Title
+        <input id="vcTitle" type="text" value="SUNSET HEIST" maxlength="28" autocomplete="off">
+      </label>
+      <label class="vc-field">Subtitle
+        <input id="vcSubtitle" type="text" value="a vice coast story" maxlength="36" autocomplete="off">
+      </label>
+      <label class="vc-field">Plate
+        <input id="vcPlate" type="text" value="VI" maxlength="6" autocomplete="off">
+      </label>
+    </div>
+    <div class="vc-group">
+      <h2>Selected panel</h2>
+      <label class="vc-field">Zoom
+        <input id="vcZoom" type="range" min="100" max="260" value="100">
+      </label>
+      <div class="vc-row">
+        <button id="vcNextBtn" type="button" class="vc-chip">Next photo</button>
+        <button id="vcFillBtn" type="button" class="vc-chip">Fill all panels</button>
+      </div>
+      <p id="vcStatus" class="vc-status">Panel 1 of 4 · 0 photo(s) loaded · zoom 100%</p>
+    </div>
+    <div class="vc-group">
+      <h2>Photos</h2>
+      <div id="vcThumbs" class="vc-thumbs"></div>
+      <p class="vc-note">Click a photo to put it in the selected panel. Drop image files anywhere to add your own.</p>
+    </div>
+  </aside>
+</main>
+<input id="vcFile" type="file" accept="image/*" multiple hidden>
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+<script src="src/shots.js"></script>
+</body>
+</html>
